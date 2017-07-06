@@ -9,16 +9,16 @@ class CalculationsController < ApplicationController
     # The text the user input is in the string @text.
     # The special word the user input is in the string @special_word.
     # ================================================================================
-
-    @word_list = @text.strip.split  ### creates a list
+    ### strip out any new line characters; remove any punctuation or anything that is not alpha or alphanumeric; then split to create list
+    @word_list = @text.downcase.strip.gsub(/[^a-z0-9\s]/i, "").split  
     @word_count = @word_list.count 
 
     @character_count_with_spaces = @text.length
 
     @character_count_without_spaces = @text.gsub(" ","").length
     
-    
-    @occurrences =  @word_list.count(@special_word) ## find the number of @special_word occurrences in @text.split
+    @special_word_downcase = @special_word.downcase
+    @occurrences =  @word_list.count(@special_word_downcase) ## find the number of @special_word occurrences in @text.split
 
     # ================================================================================
     # Your code goes above.
