@@ -5,7 +5,6 @@ class CalculationsController < ApplicationController
     @special_word = params[:user_word]
 
     # ================================================================================
-    # Your code goes below.
     # The text the user input is in the string @text.
     # The special word the user input is in the string @special_word.
     # ================================================================================
@@ -21,11 +20,11 @@ class CalculationsController < ApplicationController
     @occurrences =  @word_list.count(@special_word_downcase) ## find the number of @special_word occurrences in @text.split
 
     # ================================================================================
-    # Your code goes above.
     # ================================================================================
 
     render("word_count.html.erb")
   end
+
 
   def loan_payment
     @apr = params[:annual_percentage_rate].to_f
@@ -61,12 +60,15 @@ class CalculationsController < ApplicationController
     #   number of seconds as a result.
     # ================================================================================
 
-    @seconds = "Replace this string with your answer."
-    @minutes = "Replace this string with your answer."
-    @hours = "Replace this string with your answer."
-    @days = "Replace this string with your answer."
-    @weeks = "Replace this string with your answer."
-    @years = "Replace this string with your answer."
+    @starting_time = Time.parse(@starting.to_s)
+    @ending_time = Time.parse(@ending.to_s)
+    @timediff = @ending_time - @starting_time
+    @seconds = @timediff
+    @minutes = (@timediff/60).round(2)
+    @hours = (@timediff/(60*60)).round(2)
+    @days = (@timediff/(60*60*24)).round(2)
+    @weeks = (@timediff/(60*60*24*7)).round(2)
+    @years = (@timediff/(60*60*24*365)).round(2)
 
     # ================================================================================
     # Your code goes above.
