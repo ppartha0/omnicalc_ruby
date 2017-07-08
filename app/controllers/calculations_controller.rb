@@ -52,7 +52,6 @@ class CalculationsController < ApplicationController
     @ending = Chronic.parse(params[:ending_time])
 
     # ================================================================================
-    # Your code goes below.
     # The start time is in the Time @starting.
     # The end time is in the Time @ending.
     # Note: Ruby stores Times in terms of seconds since Jan 1, 1970.
@@ -64,14 +63,13 @@ class CalculationsController < ApplicationController
     @ending_time = Time.parse(@ending.to_s)
     @timediff = @ending_time - @starting_time
     @seconds = @timediff
-    @minutes = (@timediff/60).round(2)
-    @hours = (@timediff/(60*60)).round(2)
-    @days = (@timediff/(60*60*24)).round(2)
-    @weeks = (@timediff/(60*60*24*7)).round(2)
-    @years = (@timediff/(60*60*24*365)).round(2)
+    @minutes = (@timediff/60).round(4)
+    @hours = (@timediff/(60*60)).round(4)
+    @days = (@timediff/(60*60*24)).round(4)
+    @weeks = (@timediff/(60*60*24*7)).round(4)
+    @years = (@timediff/(60*60*24*365)).round(4)
 
     # ================================================================================
-    # Your code goes above.
     # ================================================================================
 
     render("time_between.html.erb")
