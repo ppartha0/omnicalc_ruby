@@ -39,13 +39,15 @@ class CalculationsController < ApplicationController
     # ================================================================================
     
     ## Loan Payment formula:
-    ## P = r*PV/(1-(1+r)^-n)
+    ## LP = (rP(1+r)^N)/((1+r)^N -1)
+    ## if r=0, P/N
+    @apr_decimal = @apr/1200
+    @months = @years*12
     
-    @monthly_payment = (@apr/100 * @principal)/(1-(1+@apr/100)**-@years)
+    @monthly_payment = (@apr_decimal*@principal*(1+@apr_decimal)**@months)/((1+@apr_decimal)**@months -1)
 
     # ================================================================================
-    # Your code goes above.
-    # ================================================================================
+      # ================================================================================
 
     render("loan_payment.html.erb")
   end
