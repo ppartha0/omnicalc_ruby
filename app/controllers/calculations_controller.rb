@@ -44,7 +44,7 @@ class CalculationsController < ApplicationController
     @apr_decimal = @apr/1200
     @months = @years*12
     
-    @monthly_payment = (@apr_decimal*@principal*(1+@apr_decimal)**@months)/((1+@apr_decimal)**@months -1)
+    @monthly_payment = (@apr_decimal*@principal*(1+@apr_decimal)**@months)/((1+@apr_decimal)**@months-1)
 
     # ================================================================================
     # ================================================================================
@@ -129,25 +129,11 @@ class CalculationsController < ApplicationController
       index1 = (@count/2) - 1 ### this is because the first index is 0
       index2 = @count/2
       @median = (@sorted_numbers[index1] + @sorted_numbers[index2])/2
-    else
-      index1 = (@count+1)/2
+    elsif @count % 2 != 0
+      index1 = ((@count+1)/2) - 1 ### this is because the first index is 0
       @median = @sorted_numbers[index1]
     end
     
-      
-    
-   
-
-    
-    
-    
-
-
-
-    # ================================================================================
-    # Your code goes above.
-    # ================================================================================
-
-    render("descriptive_statistics.html.erb")
+   render("descriptive_statistics.html.erb")
   end
 end
