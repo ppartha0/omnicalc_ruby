@@ -90,7 +90,7 @@ class CalculationsController < ApplicationController
     @sorted_numbers = @numbers.sort
     @count = @numbers.count
     @sum = @numbers.sum
-    @mean = (@sum/@count).round(2)
+    @mean = (@sum/@count)
 
     @minimum = 1.0
     @maximum = 1.0
@@ -109,7 +109,7 @@ class CalculationsController < ApplicationController
     end
     
     ## variance formula: sigsquared = sum(X-mu)^2/N
-    @variance = ((squared_numbers.sum)/@count).round(2)
+    @variance = ((squared_numbers.sum)/@count)
     @standard_deviation = (@variance**0.5).round(2)
     @range = @maximum - @minimum
     
