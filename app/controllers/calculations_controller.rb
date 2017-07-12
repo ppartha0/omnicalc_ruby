@@ -70,8 +70,8 @@ class CalculationsController < ApplicationController
     @seconds = @timediff
     @minutes = (@timediff/60).round(4)
     @hours = (@timediff/(60*60)).round(4)
-    @days = (@timediff/(60*60*24)).round(4)
-    @weeks = (@timediff/(60*60*24*7)).round(4)
+    @days = (@timediff/(60*60*24))
+    @weeks = (@timediff/(60*60*24*7))
     @years = (@timediff/(60*60*24*365)).round(4)
 
     # ================================================================================
